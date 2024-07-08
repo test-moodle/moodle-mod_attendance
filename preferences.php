@@ -63,6 +63,7 @@ if (!empty($att->pageparams->action)) {
     require_sesskey();
 }
 $notification = '';
+// phpcs:disable moodle.Commenting.TodoComment
 // TODO: combine this with the stuff in defaultstatus.php to avoid code duplication.
 switch ($att->pageparams->action) {
     case mod_attendance_preferences_page_params::ACTION_ADD:
@@ -157,7 +158,8 @@ switch ($att->pageparams->action) {
                 $studentavailability[$id] = '';
             }
             $errors[$id] = attendance_update_status($status, $acronym[$id], $description[$id], $grade[$id],
-                                                    null, $att->context, $att->cm, $studentavailability[$id], $availablebeforesession[$id], $setunmarked);
+                                                    null, $att->context, $att->cm, $studentavailability[$id],
+                                                    $availablebeforesession[$id], $setunmarked);
         }
         attendance_update_users_grade($att);
         break;

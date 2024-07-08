@@ -44,6 +44,7 @@ echo $OUTPUT->heading(get_string('defaultstatus', 'mod_attendance'));
 $tabmenu = attendance_print_settings_tabs('defaultstatus');
 echo $tabmenu;
 
+// phpcs:disable moodle.Commenting.TodoComment
 // TODO: Would be good to combine this code block with the one in preferences to avoid duplication.
 $errors = [];
 switch ($action) {
@@ -122,7 +123,8 @@ switch ($action) {
                 $availablebeforesession[$id] = 0;
             }
             $errors[$id] = attendance_update_status($status, $acronym[$id], $description[$id], $grade[$id],
-                                             null, null, null, $studentavailability[$id], $availablebeforesession[$id], $setunmarked);
+                                             null, null, null, $studentavailability[$id], $availablebeforesession[$id],
+                                             $setunmarked);
         }
         echo $OUTPUT->notification(get_string('eventstatusupdated', 'attendance'), 'success');
 

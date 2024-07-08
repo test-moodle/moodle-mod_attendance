@@ -21,6 +21,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @package mod_attendance
  */
+
 require_once('../../config.php');
 require_once($CFG->dirroot.'/message/lib.php');
 $id = required_param('id', PARAM_INT);

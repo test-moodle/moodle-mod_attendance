@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Externallib.php file for attendance plugin.
  *
@@ -533,6 +534,7 @@ class mod_attendance_external extends external_api {
         $student = $DB->get_record('user', ['id' => $params['studentid']], '*', MUST_EXIST);
         $takenby = $DB->get_record('user', ['id' => $params['takenbyid']], '*', MUST_EXIST);
 
+        // phpcs:disable moodle.Commenting.TodoComment
         // TODO: Verify statusset and statusid.
 
         return attendance_handler::update_user_status($params['sessionid'], $params['studentid'], $params['takenbyid'],

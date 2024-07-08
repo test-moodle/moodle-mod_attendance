@@ -67,7 +67,7 @@ class user_data implements renderable {
      * @param int $userid
      * @param boolean $mobile - this is called by the mobile code, don't generate everything.
      */
-    public function  __construct(mod_attendance_structure $att, $userid, $mobile = false) {
+    public function __construct(mod_attendance_structure $att, $userid, $mobile = false) {
         $this->user = $att->get_user($userid);
 
         $this->pageparams = $att->pageparams;
@@ -172,6 +172,7 @@ class user_data implements renderable {
      */
     public function take_sessions_from_form_data($formdata) {
         global $DB, $USER;
+        // phpcs:disable moodle.Commenting.TodoComment
         // TODO: WARNING - $formdata is unclean - comes from direct $_POST - ideally needs a rewrite but we do some cleaning below.
         // This whole function could do with a nice clean up.
 

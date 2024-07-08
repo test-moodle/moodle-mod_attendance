@@ -45,7 +45,7 @@ class mod_attendance_report_page_params extends mod_attendance_page_with_filter_
     /**
      * mod_attendance_report_page_params constructor.
      */
-    public function  __construct() {
+    public function __construct() {
         $this->selectortype = self::SELECTOR_GROUP;
     }
 

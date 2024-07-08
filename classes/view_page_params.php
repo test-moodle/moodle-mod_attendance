@@ -53,7 +53,7 @@ class mod_attendance_view_page_params extends mod_attendance_page_with_filter_co
     /**
      * mod_attendance_view_page_params constructor.
      */
-    public function  __construct() {
+    public function __construct() {
         $this->defaultview = ATT_VIEW_MONTHS;
     }
 

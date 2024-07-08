@@ -66,14 +66,15 @@ class studentattendance extends \moodleform {
             $mform->addElement('html', $attforsession->description);
         }
         if (!empty($attforsession->studentpassword) &&
-            !(attendance_is_status_availablebeforesession($attforsession->id) && !attendance_session_open_for_students($attforsession))) {
+            !(attendance_is_status_availablebeforesession($attforsession->id) &&
+                !attendance_session_open_for_students($attforsession))) {
             $mform->addElement('text', 'studentpassword', get_string('password', 'attendance'));
             $mform->setType('studentpassword', PARAM_TEXT);
             $mform->addRule('studentpassword', get_string('passwordrequired', 'attendance'), 'required');
             $mform->setDefault('studentpassword', $password);
         }
 
-        // Display current status:
+        // Display current status.
         if (attendance_check_allow_update($attforsession->id)) {
             // Check if an existing status is set, and show it.
             $existingstatusid = $DB->get_field('attendance_log', 'statusid',
@@ -81,7 +82,8 @@ class studentattendance extends \moodleform {
             if (!empty($existingstatusid)) {
                 $existingstatus = $attblock->get_statuses(false)[$existingstatusid];
                 if (!empty($existingstatus)) {
-                    $mform->addElement('static', '', '', get_string("userexistingstatus", 'mod_attendance', $existingstatus->description));
+                    $mform->addElement('static', '', '', get_string("userexistingstatus", 'mod_attendance',
+                        $existingstatus->description));
                 }
             }
         }

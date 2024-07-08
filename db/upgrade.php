@@ -797,7 +797,7 @@ function xmldb_attendance_upgrade($oldversion=0) {
     }
 
     if ($oldversion < 2023032800) {
-        // Update any records with null values and set to 0;
+        // Update any records with null values and set to 0.
         $sql = 'UPDATE {attendance_sessions} set allowupdatestatus = 0 WHERE allowupdatestatus is null';
         $DB->execute($sql);
 

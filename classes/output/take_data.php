@@ -65,7 +65,7 @@ class take_data implements renderable {
      * take_data constructor.
      * @param mod_attendance_structure $att
      */
-    public function  __construct(mod_attendance_structure $att) {
+    public function __construct(mod_attendance_structure $att) {
         if ($att->pageparams->grouptype) {
             $this->users = $att->get_users($att->pageparams->grouptype, $att->pageparams->page);
         } else {

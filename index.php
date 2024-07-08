@@ -63,11 +63,11 @@ $table = new html_table();
 
 if ($usesections) {
     $strsectionname = get_string('sectionname', 'format_'.$course->format);
-    $table->head  =  [$strsectionname, $strname];
-    $table->align =  ["center", "left"];
+    $table->head = [$strsectionname, $strname];
+    $table->align = ["center", "left"];
 } else {
-    $table->head  =  [$strname];
-    $table->align =  ["left"];
+    $table->head = [$strname];
+    $table->align = ["left"];
 }
 
 foreach ($atts as $att) {
@@ -78,9 +78,9 @@ foreach ($atts as $att) {
     $link = '<a '.$dimmedclass.' href="'.$viewurl->out().'">'.$att->name.'</a>';
 
     if ($usesections) {
-        $tabledata =  [get_section_name($course, $att->section), $link];
+        $tabledata = [get_section_name($course, $att->section), $link];
     } else {
-        $tabledata =  [$link];
+        $tabledata = [$link];
     }
 
     $table->data[] = $tabledata;

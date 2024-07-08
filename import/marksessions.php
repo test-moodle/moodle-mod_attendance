@@ -87,7 +87,7 @@ if ($form->is_cancelled()) {
 } else if ($data = $form->get_data()) {
     if ($data->confirm) {
         $importid = $data->importid;
-        $importer = new \mod_attendance\import\marksessions(null, $att, null, null, $importid, $data, true);
+        $importer = new \mod_attendance\import\marksessions($att, null, null, null, $importid, $data, true);
         $error = $importer->get_error();
         if ($error) {
             $form = new \mod_attendance\form\import\marksessions($url->out(false), $formparams);
@@ -105,7 +105,7 @@ if ($form->is_cancelled()) {
         $text = $form->get_file_content('attendancefile');
         $encoding = $data->encoding;
         $delimiter = $data->separator;
-        $importer = new \mod_attendance\import\marksessions($text, $att, $encoding, $delimiter, 0, null, true);
+        $importer = new \mod_attendance\import\marksessions($att, $text, $encoding, $delimiter, 0, null, true);
         $formparams['importer'] = $importer;
         $confirmform = new \mod_attendance\form\import\marksessions_confirm(null, $formparams);
         $form = $confirmform;

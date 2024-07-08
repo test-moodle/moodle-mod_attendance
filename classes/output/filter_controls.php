@@ -47,7 +47,7 @@ class filter_controls implements renderable {
     public $nextcur;
     /** @var string  */
     public $curdatetxt;
-    /** @var boolean  */
+    /** @var bool  */
     public $reportcontrol;
     /** @var string  */
     private $urlpath;

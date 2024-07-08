@@ -524,13 +524,13 @@ function attendance_remove_user_from_thirdpartyemails($warnings, $userid) {
 
     // Update the third party emails list for all the relevant warnings.
     $updatedwarnings = array_map(
-        function(stdClass $warning) use ($userid) : stdClass {
+        function(stdClass $warning) use ($userid): stdClass {
             $warning->thirdpartyemails = implode(',', array_diff(explode(',', $warning->thirdpartyemails), [$userid]));
             return $warning;
         },
         array_filter(
             $warnings,
-            function (stdClass $warning) use ($userid) : bool {
+            function (stdClass $warning) use ($userid): bool {
                 return in_array($userid, explode(',', $warning->thirdpartyemails));
             }
         )

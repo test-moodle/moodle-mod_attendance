@@ -61,7 +61,7 @@ class report_data implements renderable {
      * report_data constructor.
      * @param mod_attendance_structure $att
      */
-    public function  __construct(mod_attendance_structure $att) {
+    public function __construct(mod_attendance_structure $att) {
         $this->pageparams = $att->pageparams;
 
         $this->users = $att->get_users($att->pageparams->group, $att->pageparams->page);

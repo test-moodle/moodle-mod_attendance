@@ -44,7 +44,7 @@ class user_sessions_cells_generator {
      * @param mod_attendance\output\report_data $reportdata - reportdata.
      * @param stdClass $user - user record.
      */
-    public function  __construct(mod_attendance\output\report_data $reportdata, $user) {
+    public function __construct(mod_attendance\output\report_data $reportdata, $user) {
         $this->reportdata = $reportdata;
         $this->user = $user;
     }

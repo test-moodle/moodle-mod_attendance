@@ -679,7 +679,7 @@ class renderer extends plugin_renderer_base {
         }
 
         if ($takedata->pageparams->viewmode == mod_attendance_take_page_params::SORTED_GRID) {
-            $options =  [1 => '1 '.get_string('column', 'attendance'), '2 '.get_string('columns', 'attendance'),
+            $options = [1 => '1 '.get_string('column', 'attendance'), '2 '.get_string('columns', 'attendance'),
                                    '3 '.get_string('columns', 'attendance'), '4 '.get_string('columns', 'attendance'),
                                    '5 '.get_string('columns', 'attendance'), '6 '.get_string('columns', 'attendance'),
                                    '7 '.get_string('columns', 'attendance'), '8 '.get_string('columns', 'attendance'),
@@ -2032,7 +2032,8 @@ class renderer extends plugin_renderer_base {
                             if (attendance_session_open_for_students($sess)) {
                                 $cell = new html_table_cell(html_writer::link($url, get_string('submitattendance', 'attendance')));
                             } else {
-                                $cell = new html_table_cell(html_writer::link($url, get_string('submitattendancefuture', 'attendance')));
+                                $cell = new html_table_cell(html_writer::link($url, get_string('submitattendancefuture',
+                                    'attendance')));
                             }
                             $cell->colspan = 3;
                             $row->cells[] = $cell;
