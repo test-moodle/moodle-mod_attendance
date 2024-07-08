@@ -38,11 +38,11 @@ $pageparams->page       = optional_param('page', 1, PARAM_INT);
 $importid               = optional_param('importid', null, PARAM_INT);
 
 $cm                     = get_coursemodule_from_id('attendance', $id, 0, false, MUST_EXIST);
-$course                 = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
-$att                    = $DB->get_record('attendance', array('id' => $cm->instance), '*', MUST_EXIST);
+$course                 = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
+$att                    = $DB->get_record('attendance', ['id' => $cm->instance], '*', MUST_EXIST);
 
 // Check this is a valid session for this attendance.
-$session                = $DB->get_record('attendance_sessions', array('id' => $pageparams->sessionid, 'attendanceid' => $att->id),
+$session                = $DB->get_record('attendance_sessions', ['id' => $pageparams->sessionid, 'attendanceid' => $att->id],
                                   '*', MUST_EXIST);
 
 require_login($course, true, $cm);
@@ -66,7 +66,7 @@ $output = $PAGE->get_renderer('mod_attendance');
 
 $formparams = ['id' => $cm->id,
                'sessionid' => $pageparams->sessionid,
-               'grouptype' => $pageparams->grouptype];
+               'grouptype' => $pageparams->grouptype, ];
 $form = null;
 if (optional_param('needsconfirm', 0, PARAM_BOOL)) {
     $form = new \mod_attendance\form\import\marksessions($url->out(false), $formparams);
@@ -80,9 +80,9 @@ if (optional_param('needsconfirm', 0, PARAM_BOOL)) {
 
 if ($form->is_cancelled()) {
     redirect(new moodle_url('/mod/attendance/take.php',
-             array('id' => $cm->id,
+             ['id' => $cm->id,
              'sessionid' => $pageparams->sessionid,
-             'grouptype' => $pageparams->grouptype)));
+             'grouptype' => $pageparams->grouptype, ]));
     return;
 } else if ($data = $form->get_data()) {
     if ($data->confirm) {
@@ -96,7 +96,7 @@ if ($form->is_cancelled()) {
             echo $output->header();
             $sessions = $importer->import();
             mod_attendance_notifyqueue::show();
-            $url = new moodle_url('/mod/attendance/manage.php', array('id' => $att->cmid));
+            $url = new moodle_url('/mod/attendance/manage.php', ['id' => $att->cmid]);
             echo $output->continue_button($url);
             echo $output->footer();
             die();

@@ -43,10 +43,10 @@ class marksessions {
     protected $error = '';
 
     /** @var array $sessions The sessions info */
-    protected $sessions = array();
+    protected $sessions = [];
 
     /** @var array $mappings The mappings info */
-    protected $mappings = array();
+    protected $mappings = [];
 
     /** @var int The id of the csv import */
     protected $importid = 0;
@@ -55,7 +55,7 @@ class marksessions {
     protected $importer = null;
 
     /** @var array $foundheaders */
-    protected $foundheaders = array();
+    protected $foundheaders = [];
 
     /** @var bool $useprogressbar Control whether importing should use progress bars or not. */
     protected $useprogressbar = false;
@@ -101,17 +101,17 @@ class marksessions {
      */
     protected function read_mapping_data($data) {
         if ($data) {
-            return array(
+            return [
                 'user' => $data->userfrom,
                 'scantime' => $data->scantime,
-                'status' => $data->status
-            );
+                'status' => $data->status,
+            ];
         } else {
-            return array(
+            return [
                 'user' => 0,
                 'scantime' => 1,
-                'status' => 2
-            );
+                'status' => 2,
+            ];
         }
     }
 
@@ -180,10 +180,10 @@ class marksessions {
 
         $this->useprogressbar = $useprogressbar;
 
-        $sesslog = array();
+        $sesslog = [];
 
         $validusers = $this->att->get_users($this->att->pageparams->grouptype, 0);
-        $users = array();
+        $users = [];
 
         // Re-key validusers based on the identifier used by import.
         if (!empty($mappingdata) && $mappingdata->userto !== 'id') {
@@ -197,7 +197,7 @@ class marksessions {
         }
 
         $statuses = $this->att->get_statuses();
-        $statusmap = array();
+        $statusmap = [];
         foreach ($statuses as $st) {
             $statusmap[$st->acronym] = $st->id;
         }

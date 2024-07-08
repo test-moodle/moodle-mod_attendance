@@ -58,7 +58,7 @@ final class provider implements
                 'timetaken' => 'privacy:metadata:timetaken',
                 'takenby' => 'privacy:metadata:takenby',
                 'remarks' => 'privacy:metadata:remarks',
-                'ipaddress' => 'privacy:metadata:ipaddress'
+                'ipaddress' => 'privacy:metadata:ipaddress',
             ],
             'privacy:metadata:attendancelog'
         );
@@ -71,7 +71,7 @@ final class provider implements
                 'duration' => 'privacy:metadata:duration',
                 'lasttaken' => 'privacy:metadata:lasttaken',
                 'lasttakenby' => 'privacy:metadata:lasttakenby',
-                'timemodified' => 'privacy:metadata:timemodified'
+                'timemodified' => 'privacy:metadata:timemodified',
             ],
             'privacy:metadata:attendancesessions'
         );
@@ -81,7 +81,7 @@ final class provider implements
             [
                 'notifyid' => 'privacy:metadata:notifyid',
                 'userid' => 'privacy:metadata:userid',
-                'timesent' => 'privacy:metadata:timesent'
+                'timesent' => 'privacy:metadata:timesent',
             ],
             'privacy:metadata:attendancewarningdone'
         );
@@ -111,7 +111,7 @@ final class provider implements
                 'modulename' => 'attendance',
                 'contextlevel' => CONTEXT_MODULE,
                 'userid' => $userid,
-                'takenbyid' => $userid
+                'takenbyid' => $userid,
             ]
         );
     }
@@ -177,7 +177,7 @@ final class provider implements
             'attendance_log',
             "sessionid IN (SELECT id FROM {attendance_sessions} WHERE attendanceid = :attendanceid",
             [
-                'attendanceid' => $cm->instance
+                'attendanceid' => $cm->instance,
             ]
         );
 
@@ -248,7 +248,7 @@ final class provider implements
             $sql = 'SELECT DISTINCT w.*
                 FROM {attendance_warning} w
                 JOIN {attendance_warning_done} d ON d.notifyid = w.id AND d.userid = ?';
-            $warnings = $DB->get_records_sql($sql, array($userid));
+            $warnings = $DB->get_records_sql($sql, [$userid]);
             if (!empty($warnings)) {
                 attendance_remove_user_from_thirdpartyemails($warnings, $userid);
             }
@@ -283,7 +283,7 @@ final class provider implements
             'modulename' => 'attendance',
             'contextlevel' => CONTEXT_MODULE,
             'studentid' => $contextlist->get_user()->id,
-            'takenby' => $contextlist->get_user()->id
+            'takenby' => $contextlist->get_user()->id,
         ];
 
         list($contextsql, $contextparams) = $DB->get_in_or_equal($contextlist->get_contextids(), SQL_PARAMS_NAMED);
@@ -489,7 +489,7 @@ final class provider implements
             'sessiondescription' => $dbrow->description,
             'timetaken' => transform::datetime($dbrow->timetaken),
             'remarks' => $dbrow->remarks,
-            'ipaddress' => $dbrow->ipaddress
+            'ipaddress' => $dbrow->ipaddress,
         ];
     }
 
@@ -507,7 +507,7 @@ final class provider implements
             'timesent' => transform::datetime($warning->timesent),
             'thirdpartyemails' => $warning->thirdpartyemails,
             'subject' => $warning->emailsubject,
-            'body' => $warning->emailcontent
+            'body' => $warning->emailcontent,
         ];
     }
 

@@ -41,6 +41,6 @@ class mod_attendance_manage_page_params extends mod_attendance_page_with_filter_
      * @return array
      */
     public function get_significant_params() {
-        return array();
+        return [];
     }
 }

@@ -63,7 +63,7 @@ class mod_attendance_view_page_params extends mod_attendance_page_with_filter_co
      * @return array
      */
     public function get_significant_params() {
-        $params = array();
+        $params = [];
 
         if (isset($this->studentid)) {
             $params['studentid'] = $this->studentid;

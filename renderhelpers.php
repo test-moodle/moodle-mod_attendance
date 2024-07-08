@@ -31,7 +31,7 @@
  */
 class user_sessions_cells_generator {
     /** @var array $cells - list of table cells. */
-    protected $cells = array();
+    protected $cells = [];
 
     /** @var stdClass $reportdata - data for report. */
     protected $reportdata;

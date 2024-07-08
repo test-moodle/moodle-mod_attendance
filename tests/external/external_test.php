@@ -72,10 +72,10 @@ class external_test extends externallib_advanced_testcase {
         global $CFG, $DB;
         require_once($CFG->dirroot . '/mod/attendance/externallib.php');
         $this->category = $this->getDataGenerator()->create_category();
-        $this->course = $this->getDataGenerator()->create_course(array('category' => $this->category->id));
-        $att = $this->getDataGenerator()->create_module('attendance', array('course' => $this->course->id));
-        $cm = $DB->get_record('course_modules', array('id' => $att->cmid), '*', MUST_EXIST);
-        $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
+        $this->course = $this->getDataGenerator()->create_course(['category' => $this->category->id]);
+        $att = $this->getDataGenerator()->create_module('attendance', ['course' => $this->course->id]);
+        $cm = $DB->get_record('course_modules', ['id' => $att->cmid], '*', MUST_EXIST);
+        $course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
         $this->attendance = new mod_attendance_structure($att, $cm, $course);
 
         $this->create_and_enrol_users();
@@ -102,7 +102,7 @@ class external_test extends externallib_advanced_testcase {
 
     /** Creating 10 students and 1 teacher. */
     protected function create_and_enrol_users() {
-        $this->students = array();
+        $this->students = [];
         for ($i = 0; $i < 10; $i++) {
             $this->students[] = $this->getDataGenerator()->create_and_enrol($this->course, 'student');
         }
@@ -135,9 +135,9 @@ class external_test extends externallib_advanced_testcase {
         $this->resetAfterTest(true);
 
         // Make another attendance.
-        $att = $this->getDataGenerator()->create_module('attendance', array('course' => $this->course->id));
-        $cm = $DB->get_record('course_modules', array('id' => $att->cmid), '*', MUST_EXIST);
-        $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
+        $att = $this->getDataGenerator()->create_module('attendance', ['course' => $this->course->id]);
+        $cm = $DB->get_record('course_modules', ['id' => $att->cmid], '*', MUST_EXIST);
+        $course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
         $second = new mod_attendance_structure($att, $cm, $course);
 
         // Just add the same session.
@@ -265,7 +265,7 @@ class external_test extends externallib_advanced_testcase {
 
         // Become a teacher.
         $teacher = self::getDataGenerator()->create_user();
-        $teacherrole = $DB->get_record('role', array('shortname' => 'editingteacher'));
+        $teacherrole = $DB->get_record('role', ['shortname' => 'editingteacher']);
         $this->getDataGenerator()->enrol_user($teacher->id, $course->id, $teacherrole->id);
         $this->setUser($teacher);
 
@@ -312,7 +312,7 @@ class external_test extends externallib_advanced_testcase {
 
         // Become a teacher.
         $teacher = self::getDataGenerator()->create_user();
-        $teacherrole = $DB->get_record('role', array('shortname' => 'editingteacher'));
+        $teacherrole = $DB->get_record('role', ['shortname' => 'editingteacher']);
         $this->getDataGenerator()->enrol_user($teacher->id, $this->course->id, $teacherrole->id);
         $this->setUser($teacher);
 
@@ -335,11 +335,11 @@ class external_test extends externallib_advanced_testcase {
         $this->resetAfterTest(true);
 
         $course = $this->getDataGenerator()->create_course();
-        $group = $this->getDataGenerator()->create_group(array('courseid' => $course->id));
+        $group = $this->getDataGenerator()->create_group(['courseid' => $course->id]);
 
         // Become a teacher.
         $teacher = self::getDataGenerator()->create_user();
-        $teacherrole = $DB->get_record('role', array('shortname' => 'editingteacher'));
+        $teacherrole = $DB->get_record('role', ['shortname' => 'editingteacher']);
         $this->getDataGenerator()->enrol_user($teacher->id, $course->id, $teacherrole->id);
         $this->setUser($teacher);
 
@@ -378,11 +378,11 @@ class external_test extends externallib_advanced_testcase {
         $this->resetAfterTest(true);
 
         $course = $this->getDataGenerator()->create_course();
-        $group = $this->getDataGenerator()->create_group(array('courseid' => $course->id));
+        $group = $this->getDataGenerator()->create_group(['courseid' => $course->id]);
 
         // Become a teacher.
         $teacher = self::getDataGenerator()->create_user();
-        $teacherrole = $DB->get_record('role', array('shortname' => 'editingteacher'));
+        $teacherrole = $DB->get_record('role', ['shortname' => 'editingteacher']);
         $this->getDataGenerator()->enrol_user($teacher->id, $course->id, $teacherrole->id);
         $this->setUser($teacher);
 
@@ -406,11 +406,11 @@ class external_test extends externallib_advanced_testcase {
         $this->resetAfterTest(true);
 
         $course = $this->getDataGenerator()->create_course();
-        $group = $this->getDataGenerator()->create_group(array('courseid' => $course->id));
+        $group = $this->getDataGenerator()->create_group(['courseid' => $course->id]);
 
         // Become a teacher.
         $teacher = self::getDataGenerator()->create_user();
-        $teacherrole = $DB->get_record('role', array('shortname' => 'editingteacher'));
+        $teacherrole = $DB->get_record('role', ['shortname' => 'editingteacher']);
         $this->getDataGenerator()->enrol_user($teacher->id, $course->id, $teacherrole->id);
         $this->setUser($teacher);
 

@@ -31,7 +31,7 @@ require_once($CFG->dirroot.'/mod/attendance/locallib.php');
 $action         = optional_param('action', null, PARAM_INT);
 $statusid       = optional_param('statusid', null, PARAM_INT);
 admin_externalpage_setup('managemodules');
-$url = new moodle_url('/mod/attendance/defaultstatus.php', array('statusid' => $statusid, 'action' => $action));
+$url = new moodle_url('/mod/attendance/defaultstatus.php', ['statusid' => $statusid, 'action' => $action]);
 
 // Check sesskey if we are performing an action.
 if (!empty($action)) {
@@ -45,7 +45,7 @@ $tabmenu = attendance_print_settings_tabs('defaultstatus');
 echo $tabmenu;
 
 // TODO: Would be good to combine this code block with the one in preferences to avoid duplication.
-$errors = array();
+$errors = [];
 switch ($action) {
     case mod_attendance_preferences_page_params::ACTION_ADD:
         $newacronym         = optional_param('newacronym', null, PARAM_TEXT);

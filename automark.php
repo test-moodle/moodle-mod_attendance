@@ -30,9 +30,9 @@ $sessionid  = required_param('sessionid', PARAM_INT);
 $grouptype  = required_param('grouptype', PARAM_INT);
 
 $cm             = get_coursemodule_from_id('attendance', $id, 0, false, MUST_EXIST);
-$course         = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
-$att            = $DB->get_record('attendance', array('id' => $cm->instance), '*', MUST_EXIST);
-$session        = $DB->get_record('attendance_sessions', array('id' => $sessionid, 'attendanceid' => $att->id),
+$course         = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
+$att            = $DB->get_record('attendance', ['id' => $cm->instance], '*', MUST_EXIST);
+$session        = $DB->get_record('attendance_sessions', ['id' => $sessionid, 'attendanceid' => $att->id],
                                   '*', MUST_EXIST);
 
 require_login($course, true, $cm);

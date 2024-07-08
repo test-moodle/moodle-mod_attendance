@@ -87,18 +87,18 @@ class studentattendance extends \moodleform {
         }
 
         // Create radio buttons for setting the attendance status.
-        $radioarray = array();
+        $radioarray = [];
         foreach ($statuses as $status) {
             $name = \html_writer::span($status->description, 'statusdesc');
-            $radioarray[] =& $mform->createElement('radio', 'status', '', $name, $status->id, array());
+            $radioarray[] =& $mform->createElement('radio', 'status', '', $name, $status->id, []);
         }
         if ($disabledduetotime) {
             $warning = \html_writer::span(get_string('somedisabledstatus', 'attendance'), 'somedisabledstatus');
             $radioarray[] =& $mform->createElement('static', '', '', $warning);
         }
         // Add the radio buttons as a control with the user's name in front.
-        $radiogroup = $mform->addGroup($radioarray, 'statusarray', fullname($USER).':', array(''), false);
-        $radiogroup->setAttributes(array('class' => 'statusgroup'));
+        $radiogroup = $mform->addGroup($radioarray, 'statusarray', fullname($USER).':', [''], false);
+        $radiogroup->setAttributes(['class' => 'statusgroup']);
         $mform->addRule('statusarray', get_string('attendancenotset', 'attendance'), 'required', '', 'client', false, false);
         if (!empty($existingstatus) && !empty($statuses[$existingstatus->id])) {
             $mform->setDefault('status', $existingstatus->id);
@@ -115,7 +115,7 @@ class studentattendance extends \moodleform {
      * @return array
      */
     public function validation($data, $files) {
-        $errors = array();
+        $errors = [];
         if (!($this->_customdata['session']->autoassignstatus)) {
             // Check if this status is allowed to be set.
             if (empty($data['status'])) {

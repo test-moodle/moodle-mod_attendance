@@ -168,7 +168,7 @@ class session_handler extends \core_customfield\handler {
         // Field data visibility.
         $visibilityoptions = [self::VISIBLETOALL => get_string('customfield_visibletoall', 'core_course'),
             self::VISIBLETOTEACHERS => get_string('customfield_visibletoteachers', 'core_course'),
-            self::NOTVISIBLE => get_string('customfield_notvisible', 'core_course')];
+            self::NOTVISIBLE => get_string('customfield_notvisible', 'core_course'), ];
         $mform->addElement('select', 'configdata[visibility]', get_string('customfield_visibility', 'core_course'),
             $visibilityoptions);
         $mform->addHelpButton('configdata[visibility]', 'customfield_visibility', 'core_course');
@@ -244,7 +244,7 @@ class session_handler extends \core_customfield\handler {
                         'shortname' => $d->get_field()->get('shortname'),
                         'type' => $d->get_field()->get('type'),
                         'value' => $d->get_value(),
-                        'valueformat' => $d->get('valueformat')];
+                        'valueformat' => $d->get('valueformat'), ];
                 }
             }
         }
