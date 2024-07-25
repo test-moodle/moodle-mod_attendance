@@ -71,7 +71,7 @@ $form = null;
 if (optional_param('needsconfirm', 0, PARAM_BOOL)) {
     $form = new \mod_attendance\form\import\marksessions($url->out(false), $formparams);
 } else if (optional_param('confirm', 0, PARAM_BOOL)) {
-    $importer = new \mod_attendance\import\marksessions(null, $att, null, null, $importid);
+    $importer = new \mod_attendance\import\marksessions($att, null, null, null, $importid);
     $formparams['importer'] = $importer;
     $form = new \mod_attendance\form\import\marksessions_confirm(null, $formparams);
 } else {
