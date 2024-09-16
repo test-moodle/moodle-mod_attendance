@@ -43,6 +43,7 @@ class export extends \moodleform {
         $course        = $this->_customdata['course'];
         $cm            = $this->_customdata['cm'];
         $modcontext    = $this->_customdata['modcontext'];
+        $grouplist    = [];
 
         $mform->addElement('header', 'general', get_string('export', 'attendance'));
 
@@ -76,11 +77,14 @@ class export extends \moodleform {
             return;
         }
 
-        list($gsql, $gparams) = $DB->get_in_or_equal(array_keys($grouplist), SQL_PARAMS_NAMED);
-        list($usql, $uparams) = $DB->get_in_or_equal(array_keys($userlist), SQL_PARAMS_NAMED);
-        $params = array_merge($gparams, $uparams);
-        $groupmembers = $DB->get_recordset_select('groups_members', "groupid {$gsql} AND userid {$usql}", $params,
-                                                  '', 'groupid, userid');
+        $groupmembers = [];
+        if (!empty($grouplist)) {
+            list($gsql, $gparams) = $DB->get_in_or_equal(array_keys($grouplist), SQL_PARAMS_NAMED);
+            list($usql, $uparams) = $DB->get_in_or_equal(array_keys($userlist), SQL_PARAMS_NAMED);
+            $params = array_merge($gparams, $uparams);
+            $groupmembers = $DB->get_recordset_select('groups_members', "groupid {$gsql} AND userid {$usql}", $params,
+                                                      '', 'groupid, userid');
+        }
         $groupmappings = [];
         foreach ($groupmembers as $groupmember) {
             if (!isset($groupmappings[$groupmember->groupid])) {
