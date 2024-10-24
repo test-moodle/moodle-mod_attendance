@@ -104,7 +104,7 @@ class mod_attendance_structure {
     /** @var float number [0..1], the threshold for student to be shown at low grade report */
     private $lowgradethreshold;
 
-    // phpcs:disable PHPCompatibility.FunctionDeclarations.RemovedImplicitlyNullableParam
+    // phpcs-disable PHPCompatibility.FunctionDeclarations.RemovedImplicitlyNullableParam
 
     /**
      * Initializes the attendance API instance using the data from DB

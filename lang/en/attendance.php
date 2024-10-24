@@ -582,7 +582,7 @@ $string['statusunselected'] = 'unselected';
 $string['strftimedm'] = '%b %d';
 $string['strftimedmw'] = '<nobr>%a %b %d</nobr>';
 $string['strftimedmy'] = '%d %b %Y';
-// phpcs:disable moodle.Files.LangFilesOrdering.UnexpectedComment
+// phpcs-disable moodle.Files.LangFilesOrdering.UnexpectedComment
 $string['strftimedmyhm'] = '%d %b %Y %I.%M%p'; // Line added to allow multiple sessions in the same day.
 $string['strftimedmyw'] = '<nobr>%a %d %b %Y</nobr>';
 $string['strftimeh'] = '%I%p';

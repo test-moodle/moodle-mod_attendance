@@ -27,7 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 
 // List of observers.
 $observers = [
-
     [
         'eventname'   => '\core\event\course_content_deleted',
         'callback'    => 'mod_attendance_observer::course_content_deleted',

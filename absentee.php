@@ -28,7 +28,9 @@ require_once($CFG->dirroot.'/mod/attendance/lib.php');
 require_once($CFG->dirroot.'/mod/attendance/locallib.php');
 require_once($CFG->libdir.'/tablelib.php');
 
-$category = optional_param('category', 0, PARAM_INT);
+try {
+    $category = optional_param('category', 0, PARAM_INT);
+
 $attendancecm = optional_param('id', 0, PARAM_INT);
 $download = optional_param('download', '', PARAM_ALPHA);
 $sort = optional_param('tsort', 'timesent', PARAM_ALPHA);
@@ -166,4 +168,7 @@ $table->finish_output();
 
 if (!$table->is_downloading()) {
     echo $OUTPUT->footer();
+}
+
+} catch (Exception $e) {
 }

@@ -172,7 +172,7 @@ class user_data implements renderable {
      */
     public function take_sessions_from_form_data($formdata) {
         global $DB, $USER;
-        // phpcs:disable moodle.Commenting.TodoComment
+        // phpcs-disable moodle.Commenting.TodoComment
         // TODO: WARNING - $formdata is unclean - comes from direct $_POST - ideally needs a rewrite but we do some cleaning below.
         // This whole function could do with a nice clean up.
 
